@@ -1,0 +1,29 @@
+@import url();
+
+body{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: aquamarine;
+}
+
+.quiz{
+    margin: 0 auto;
+    width: 600px;
+}
+
+.quiz-questions{
+     
+}
+
+.quiz-questions-item{
+    &__question{
+        margin: 0;
+        padding: 0;
+        list-style: none; 
+    }
+    &__answers{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}

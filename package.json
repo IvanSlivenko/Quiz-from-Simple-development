@@ -1,0 +1,11 @@
+{
+  "name": "Quiz-from-Simple-development",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/IvanSlivenko/Quiz-from-Simple-development.git",
+  "author": "IvanSlivenko <ivan8822@ukr.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+}
