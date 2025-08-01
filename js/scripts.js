@@ -1,42 +1,4 @@
-const data = [
-    {
-        question: 'Питання № 1',
-        answers: [
-            {
-                id: '1',
-                value: 'Відповідь 1',
-                correct: true
-            },
-            {
-                id: '2',
-                value: 'Відповідь 2',
-                correct: false
-            },
-            {
-                id: '3',
-                value: 'Відповідь 3',
-                correct: false
-            }
-
-
-        ]
-    },
-    {
-        question: 'Питання № 2',
-        answers: [
-            {
-                id: '4',
-                value: 'Відповідь 4',
-                correct: false
-            },
-            {
-                id: '5',
-                value: 'Відповідь 5',
-                correct: true
-            }
-        ]
-    }
-]
+let data = questionsArray;
 
 const quiz = document.getElementById('quiz');
 const questions = document.getElementById('questions');
@@ -46,9 +8,49 @@ const btnNext = document.getElementById('btn-next');
 const btnRestart = document.getElementById('btn-restart');
 
 
- const renderQuestions = () => {};
+ const renderQuestions = (index) => {
+    const renderAnswers = () =>{
+
+    }
+    questions.innerHTML = `
+    <div class="quiz-questions-item">
+          <div class="quiz-questions-item__question">${data[index].question}</div>
+          <ul class="quiz-questions-item__answers">
+            <li>
+              <label>
+                <input type="radio" name="q1" />
+                Відповідь № 1
+              </label>
+            </li>
+
+            <li>
+              <label>
+                <input type="radio" name="q1" />
+                Відповідь № 2
+              </label>
+            </li>
+          </ul>
+        </div>
+    `;
+ };
  const renderResults = () => {};
  const renderIndicator = () => {};
 
 
- quiz.addEventListener('change')
+ quiz.addEventListener('change', (event) => {
+    // логіка відповіді
+
+ });
+
+ quiz.addEventListener('click', (event) => {
+    // Кнопка вперед чи зпочатку
+
+    if(event.target.classList.contains('btn-next')){
+        console.log('btn-next')
+    }
+
+    if(event.target.classList.contains('btn-restart')){
+        console.log('btn-restart')
+    }
+    
+ });
