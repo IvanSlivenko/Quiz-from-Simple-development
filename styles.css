@@ -2,7 +2,8 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
-  background-color: aquamarine;
+  color: aliceblue;
+  background-color: black;
 }
 
 .quiz {
@@ -10,15 +11,32 @@ body {
   width: 600px;
 }
 
-.quiz-questions-item__question {
+.quiz-questions {
+  margin-bottom: 20px;
+}
+
+.quiz-questions-item__question,
+.quiz-rezults-item__question {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.quiz-questions-item__answers,
+.quiz-rezults-item__answers {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.quiz-questions-item__answers {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+
+.quiz-indicator {
+  margin-bottom: 20px;
+}
+
+.quiz-rezults {
+  margin-bottom: 20px;
+}
+
+.btn-restart {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
