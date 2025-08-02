@@ -8,49 +8,52 @@ const btnNext = document.getElementById('btn-next');
 const btnRestart = document.getElementById('btn-restart');
 
 
- const renderQuestions = (index) => {
-    const renderAnswers = () =>{
+const renderQuestions = (index) => {
+    renderIndicator(index+1)
+    const renderAnswers = () =>
+        data[index].answers
+            .map((answer) =>
+                `
+            <li>
+              <label>
+                <input class="answer-input" type="radio" name=${index} value=${answer.id}/>
+                ${answer.value}
+              </label>
+            </li>
+            `
+            ).join('');
 
-    }
     questions.innerHTML = `
     <div class="quiz-questions-item">
           <div class="quiz-questions-item__question">${data[index].question}</div>
           <ul class="quiz-questions-item__answers">
-            <li>
-              <label>
-                <input type="radio" name="q1" />
-                Відповідь № 1
-              </label>
-            </li>
-
-            <li>
-              <label>
-                <input type="radio" name="q1" />
-                Відповідь № 2
-              </label>
-            </li>
+            ${renderAnswers()}
           </ul>
         </div>
     `;
+};
+const renderResults = () => { };
+const renderIndicator = (currentStep) => {
+    indicator.innerHTML= `${currentStep} / ${data.length}`
  };
- const renderResults = () => {};
- const renderIndicator = () => {};
 
 
- quiz.addEventListener('change', (event) => {
+quiz.addEventListener('change', (event) => {
     // логіка відповіді
 
- });
+});
 
- quiz.addEventListener('click', (event) => {
+quiz.addEventListener('click', (event) => {
     // Кнопка вперед чи зпочатку
 
-    if(event.target.classList.contains('btn-next')){
+    if (event.target.classList.contains('btn-next')) {
         console.log('btn-next')
     }
 
-    if(event.target.classList.contains('btn-restart')){
+    if (event.target.classList.contains('btn-restart')) {
         console.log('btn-restart')
     }
-    
- });
+
+});
+
+renderQuestions(0);

@@ -8,7 +8,9 @@ body{
 }
 
 .quiz{
+    
     margin: 0 auto;
+    margin-top: 50px;
     width: 600px;
 }
 
@@ -35,6 +37,7 @@ body{
 }
 
 .quiz-rezults{
+    display: none;
     margin-bottom: 20px;
 }
 
