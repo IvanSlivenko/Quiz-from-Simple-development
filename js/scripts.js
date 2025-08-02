@@ -1,5 +1,9 @@
 let data = questionsArray;
 
+let localResults = {
+    // [nameQuestion]: id 
+};
+
 const quiz = document.getElementById('quiz');
 const questions = document.getElementById('questions');
 const indicator = document.getElementById('indicator');
@@ -9,16 +13,16 @@ const btnRestart = document.getElementById('btn-restart');
 
 
 const renderQuestions = (index) => {
-    renderIndicator(index+1)
+    renderIndicator(index + 1)
     const renderAnswers = () =>
         data[index].answers
             .map((answer) =>
                 `
             <li>
-              <label>
-                <input class="answer-input" type="radio" name=${index} value=${answer.id}/>
-                ${answer.value}
-              </label>
+                <label>
+                    <input class="answer-input" type="radio" name="${index}" value="${answer.id}">
+                    ${answer.value}
+                </label>
             </li>
             `
             ).join('');
@@ -34,12 +38,17 @@ const renderQuestions = (index) => {
 };
 const renderResults = () => { };
 const renderIndicator = (currentStep) => {
-    indicator.innerHTML= `${currentStep} / ${data.length}`
- };
+    indicator.innerHTML = `${currentStep} / ${data.length}`
+};
 
 
 quiz.addEventListener('change', (event) => {
-    // логіка відповіді
+    if (event.target.classList.contains('answer-input')) {
+        localResults[event.target.name] = event.target.value;
+        btnNext.disabled = false
+        // console.log(localResults);
+        // console.log('input')
+    }
 
 });
 
@@ -47,7 +56,8 @@ quiz.addEventListener('click', (event) => {
     // Кнопка вперед чи зпочатку
 
     if (event.target.classList.contains('btn-next')) {
-        console.log('btn-next')
+        // console.log('btn-next')
+        btnNext.disabled = true
     }
 
     if (event.target.classList.contains('btn-restart')) {
