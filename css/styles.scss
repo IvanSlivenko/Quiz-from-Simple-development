@@ -21,12 +21,13 @@ body{
 .quiz-questions-item,
 .quiz-rezults-item{
     &__question{
-        font-size: 20px;
+        font-size: 30px;
         margin-bottom: 20px;
          
     }
     &__answers{
         margin: 0;
+        margin-bottom: 30px;
         padding: 0;
         list-style: none;
     }
@@ -47,4 +48,15 @@ body{
 
 .btn-restart{
     display: none;
+}
+
+.questions--hidden,
+.indicator--hidden,
+.btn-next--hidden{
+display: none;
+}
+
+.btn-restart--visible,
+.result--visible{
+    display: block;
 }

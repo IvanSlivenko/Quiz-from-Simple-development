@@ -14,6 +14,8 @@ const btnRestart = document.getElementById('btn-restart');
 
 const renderQuestions = (index) => {
     renderIndicator(index + 1)
+
+    questions.dataset.currentStep = index;
     const renderAnswers = () =>
         data[index].answers
             .map((answer) =>
@@ -36,7 +38,26 @@ const renderQuestions = (index) => {
         </div>
     `;
 };
-const renderResults = () => { };
+const renderResults = () => {
+    let content = '';
+
+    const getAnswers = (questionIndex) => data[questionIndex].answers
+    .map((answer)=> `<li>${answer.value}</li>`)
+    .join('');
+     
+    data.forEach((question, index) => {
+        content += `
+         <div class="quiz-rezults-item">
+          <div class="quiz-rezults-item__question">
+            ${question.question}
+          </div>
+          <ul class="quiz-rezults-item__answers">${getAnswers(index)}</ul>
+        </div>
+        `;
+    });
+
+    results.innerHTML = content;
+};
 const renderIndicator = (currentStep) => {
     indicator.innerHTML = `${currentStep} / ${data.length}`
 };
@@ -46,22 +67,42 @@ quiz.addEventListener('change', (event) => {
     if (event.target.classList.contains('answer-input')) {
         localResults[event.target.name] = event.target.value;
         btnNext.disabled = false
-        // console.log(localResults);
-        // console.log('input')
+
     }
 
 });
 
 quiz.addEventListener('click', (event) => {
-    // Кнопка вперед чи зпочатку
-
     if (event.target.classList.contains('btn-next')) {
-        // console.log('btn-next')
+        const nextQuestionIndex = Number(questions.dataset.currentStep) + 1
+
+        if (data.length === nextQuestionIndex) {
+            questions.classList.add('questions--hidden')
+            indicator.classList.add('indicator--hidden')
+            results.classList.add('result--visible')
+            btnNext.classList.add('btn-next--hidden')
+            btnRestart.classList.add('btn-restart--visible')
+            renderResults();
+        } else {
+            renderQuestions(nextQuestionIndex)
+        }
+
         btnNext.disabled = true
+
     }
 
     if (event.target.classList.contains('btn-restart')) {
-        console.log('btn-restart')
+        localResults = {};
+        results.innerHTML = '';
+
+        questions.classList.remove('questions--hidden')
+        indicator.classList.remove('indicator--hidden')
+        results.classList.remove('result--visible')
+        btnNext.classList.remove('btn-next--hidden')
+        btnRestart.classList.remove('btn-restart--visible')
+
+        renderQuestions(0);
+        
     }
 
 });
