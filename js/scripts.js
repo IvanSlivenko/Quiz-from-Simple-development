@@ -41,8 +41,20 @@ const renderQuestions = (index) => {
 const renderResults = () => {
     let content = '';
 
+    const getClassName = (answer, questionIndex) => {
+        let classname = '';
+
+        if (!answer.correct && answer.id === localResults[questionIndex]) {
+            classname = 'answer--invalid'
+        } else if (answer.correct ) {
+            classname = 'answer--valid'
+        }
+
+        return classname
+    }
+
     const getAnswers = (questionIndex) => data[questionIndex].answers
-    .map((answer)=> `<li>${answer.value}</li>`)
+    .map((answer)=> `<li class=${getClassName(answer, questionIndex)}>${answer.value}</li>`)
     .join('');
      
     data.forEach((question, index) => {

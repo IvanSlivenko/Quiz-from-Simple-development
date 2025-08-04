@@ -53,4 +53,12 @@ body {
   display: block;
 }
 
+.answer--invalid {
+  color: red;
+}
+
+.answer--valid {
+  color: green;
+}
+
 /*# sourceMappingURL=styles.css.map */

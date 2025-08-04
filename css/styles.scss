@@ -60,3 +60,11 @@ display: none;
 .result--visible{
     display: block;
 }
+
+.answer--invalid{
+    color: red;
+}
+
+.answer--valid{
+    color: green;
+}
